@@ -1,2 +1,2 @@
 # fr-c
-face recognition &amp; clustering
+Face recognition &amp; clustering.
