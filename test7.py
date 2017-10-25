@@ -34,16 +34,14 @@ face_locations = []
 face_encodings = []
 face_names = []
 process_this_frame = True
-'''
-    recalculate variable used when new people is recognize
-'''
+
+#recalculate variable used when new people is recognize
 recalculate = False
 
 i = 0
 while True:
     if recalculate:
         print("Recalculate is needed")
-        #        train_known_people()
         files = os.listdir("known_people")
         del files[0]
         training_face_encoding=[]
@@ -54,7 +52,6 @@ while True:
         recalculate = False
         process_this_frame = True
     else:
-        print("Work in regular mode")
         ret, frame = video_capture.read()
         frame=cv2.flip(frame, 1)
         small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
@@ -88,7 +85,7 @@ while True:
                 if distance_value < 0.6:
                     name = files[distance_index]
                 else:
-                    #need to get this image of unknown person
+                    #need to get this crop of image of unknown person
                     #print("NEED TO GET IMAGE OF UNKNOWN PERSON")
                     print("crop")
                     name = "unknown_"+str(time.time())
